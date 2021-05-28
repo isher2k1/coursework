@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "870807661089",
+    "project_id": "skytodo-a1245",
+    "storage_bucket": "skytodo-a1245.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870807661089:android:c28d9b18c4b0fbc3a01160",
+        "android_client_info": {
+          "package_name": "com.isher.skytodo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "870807661089-46nu518b8207ibnuj9c5th5keltrsb63.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.isher.skytodo",
+            "certificate_hash": "e43457c51bc8d7a6e624c63ba87a71f4ffec7c34"
+          }
+        },
+        {
+          "client_id": "870807661089-3lldvf68olhh2m30oesrq8thbqqbp7nf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn4irRFPoze2E7WfBC3_H1iEFtjzu3XKM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "870807661089-3lldvf68olhh2m30oesrq8thbqqbp7nf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

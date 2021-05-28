@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#71C9CE"
+    tools:context=".StartActivity">
+
+    <TextView
+        android:id="@+id/startText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SkyToDo"
+        android:layout_gravity="center"
+        android:textColor="#000000"
+        android:textSize="26sp"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/startText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Makes your tasks be completed!"
+        android:layout_gravity="center"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</LinearLayout>

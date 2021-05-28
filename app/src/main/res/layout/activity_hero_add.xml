@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_hero_add"
+    tools:context=".HeroAddActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create your Hero"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <EditText
+        android:id="@+id/heroName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name your hero"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/input_space"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose how much dmg will ur hero take:"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Easy mission!"
+        android:layout_gravity="center"
+        android:gravity="left"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        />
+
+    <EditText
+        android:id="@+id/easyChoose"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/input_space"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:hint="5-15"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Medium mission!"
+        android:layout_gravity="center"
+        android:gravity="left"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        />
+
+    <EditText
+        android:id="@+id/mediumChoose"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/input_space"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:hint="10-20"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        android:paddingLeft="25dp"
+        android:paddingRight="30dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hard mission!"
+        android:layout_gravity="center"
+        android:gravity="left"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        />
+
+    <EditText
+        android:id="@+id/hardChoose"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/input_space"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:hint="15-25"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        android:paddingLeft="25dp"
+        android:paddingRight="30dp"
+        />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Let's start!"
+        android:textAllCaps="false"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#000"
+        android:background="#F6F7D7"
+        android:textSize="20sp"
+        />
+
+</LinearLayout>
