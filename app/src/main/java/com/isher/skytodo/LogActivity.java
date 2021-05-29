@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LogActivity extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public class LogActivity extends AppCompatActivity {
     //private Toolbar toolbar;
     private FirebaseAuth mAuth;
     private ProgressDialog loader;
+    private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,18 @@ public class LogActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         loader = new ProgressDialog(this);
+
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = mAuth.getCurrentUser();
+                if (user!= null){
+                    Intent intent = new Intent(LogActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };
 
 
         loginEmail = findViewById(R.id.loginEmail);
@@ -93,10 +107,19 @@ public class LogActivity extends AppCompatActivity {
                         }
                     });
                 }
-
-                Intent intent = new Intent(LogActivity.this, HeroAddActivity.class);
-                startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(authStateListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mAuth.removeAuthStateListener(authStateListener);
     }
 }

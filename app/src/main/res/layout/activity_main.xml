@@ -8,15 +8,13 @@
     android:background="@drawable/background_view"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/mainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MAIN_ACTIVITY"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:layout_centerHorizontal="true"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/homeToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         />
     <ProgressBar
         android:id="@+id/healthBar"
@@ -26,7 +24,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:indeterminateDrawable="@drawable/progressbar_health"
         android:progress="100"
-        android:layout_below="@+id/mainText"
+        android:layout_below="@+id/homeToolbar"
         />
 
     <TextView
@@ -40,6 +38,27 @@
         android:layout_height="20dp"
         android:layout_width="wrap_content"
         android:layout_marginLeft="10dp"/>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/healthBar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_add"/>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 
