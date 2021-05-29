@@ -2,7 +2,7 @@ package com.isher.skytodo;
 
 public class Model {
 
-    private String task, description, id, date;
+    private String task, description, id, date, heroName;
 
     public Model(){};
 
@@ -11,7 +11,16 @@ public class Model {
         this.description = description;
         this.id = id;
         this.date = date;
+        this.heroName = heroName;
     }
+
+//    public String getHeroName() {
+//        return heroName;
+//    }
+//
+//    public void setHeroName(String heroName) {
+//        this.heroName = heroName;
+//    }
 
     public String getTask() {
         return task;

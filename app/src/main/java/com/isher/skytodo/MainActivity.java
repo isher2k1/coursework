@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,9 +16,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -29,11 +34,19 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
+
+import com.google.firebase.database.ValueEventListener;
+import com.isher.skytodo.LogActivity.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,11 +63,14 @@ public class MainActivity extends AppCompatActivity {
 
     private String key= "";
     private String task, description;
+    String newDate = DateFormat.getDateInstance().format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -66,10 +82,27 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         loader = new ProgressDialog(this);
+        healthBar = findViewById(R.id.healthBar);
 
         mUser = mAuth.getCurrentUser();
         onlineUserID = mUser.getUid();
         reference = FirebaseDatabase.getInstance().getReference().child("tasks").child(onlineUserID);
+
+        //System.out.println(FirebaseDatabase.getInstance().getReference().child("tasks").child(onlineUserID).orderByChild("date").get());
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("tasks").child(onlineUserID);
+        ref.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //Get map of users in datasnapshot
+                        collectDates((Map<String,Object>) dataSnapshot.getValue());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        //handle databaseError
+                    }
+                });
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +111,32 @@ public class MainActivity extends AppCompatActivity {
                 addTask();
             }
         });
+    }
+
+    private void collectDates(Map<String, Object> value) {
+        ArrayList<String> dates = new ArrayList<>();
+
+
+        for (Map.Entry<String, Object> entry : value.entrySet()){
+
+            Map singleUser = (Map) entry.getValue();
+
+            dates.add((String) singleUser.get("date"));
+        }
+        int count = 0;
+        int hp, minusHP;
+        for (int i=0; i<dates.size(); i++){
+            if (dates.equals(newDate)){
+                hp = healthBar.getProgress();
+                minusHP = hp - count*10;
+                healthBar.setProgress(minusHP);
+                count++;
+            }
+
+        }
+
+
+        System.out.println(count);
     }
 
     private void addTask() {
@@ -95,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         Button save = myView.findViewById(R.id.save_button);
         Button cancel = myView.findViewById(R.id.cancel_button);
 
+
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,6 +170,8 @@ public class MainActivity extends AppCompatActivity {
                 String mDescription = description.getText().toString().trim();
                 String id = reference.push().getKey();
                 String date = DateFormat.getDateInstance().format(new Date());
+
+
 
                 if (TextUtils.isEmpty(mTask)){
                     task.setError("Task required!");
@@ -129,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(MainActivity.this, "Task inserted successfully!", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), day + "\n" + month + "\n" + year, Toast.LENGTH_LONG).show();
                                 loader.dismiss();
                             }else{
                                 String error = task.getException().toString();
@@ -208,6 +271,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 
     private void updateTask(){
         AlertDialog.Builder myDialog = new AlertDialog.Builder(this);

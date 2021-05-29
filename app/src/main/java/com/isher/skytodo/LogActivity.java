@@ -22,6 +22,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 public class LogActivity extends AppCompatActivity {
 
     private EditText loginEmail, loginPass;
@@ -32,11 +35,14 @@ public class LogActivity extends AppCompatActivity {
     private ProgressDialog loader;
     private FirebaseAuth.AuthStateListener authStateListener;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log);
+
+
 
 //        toolbar = findViewById(R.id.loginToolBar);
 //

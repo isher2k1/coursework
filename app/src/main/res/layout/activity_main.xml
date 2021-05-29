@@ -16,15 +16,29 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         />
+
+    <TextView
+        android:id="@+id/nameHeroHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/homeToolbar"
+        android:text="Hero status:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        />
+
     <ProgressBar
         android:id="@+id/healthBar"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:indeterminate="true"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
         style="?android:attr/progressBarStyleHorizontal"
         android:indeterminateDrawable="@drawable/progressbar_health"
+        android:max="100"
+
         android:progress="100"
-        android:layout_below="@+id/homeToolbar"
+        android:layout_below="@+id/nameHeroHeader"
         />
 
     <TextView
