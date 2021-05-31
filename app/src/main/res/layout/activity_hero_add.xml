@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_hero_add"
+    android:background="@drawable/background_view"
     tools:context=".HeroAddActivity">
 
     <TextView
@@ -15,8 +15,9 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="30sp"
+
         android:fontFamily="sans-serif-black"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="60dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
@@ -31,7 +32,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:textColor="#fff"
-        android:textColorHint="#fff"
+
         android:inputType="text"
         android:background="@drawable/input_space"
         android:drawablePadding="10dp"
@@ -41,12 +42,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choose how much dmg will ur hero take:"
-        android:layout_gravity="center"
-        android:gravity="center"
+        android:text="Choose how much dmg you want to take having missed a mission:"
+        android:layout_gravity="left"
+        android:gravity="left"
         android:textSize="20sp"
-        android:fontFamily="sans-serif-black"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         />
 
     <TextView
@@ -56,8 +59,9 @@
         android:layout_gravity="center"
         android:gravity="left"
         android:textSize="20sp"
-        android:fontFamily="sans-serif-black"
+
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
         android:paddingLeft="20dp"
         />
 
@@ -67,10 +71,10 @@
         android:layout_height="50dp"
         android:background="@drawable/input_space"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="65dp"
         android:hint="5-15"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
+        android:textColor="#F6F7D7"
+
         android:paddingLeft="20dp"
         android:paddingRight="30dp"
         />
@@ -82,9 +86,9 @@
         android:layout_gravity="center"
         android:gravity="left"
         android:textSize="20sp"
-        android:fontFamily="sans-serif-black"
+
         android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
+        android:paddingLeft="65dp"
         />
 
     <EditText
@@ -93,10 +97,10 @@
         android:layout_height="50dp"
         android:background="@drawable/input_space"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="65dp"
         android:hint="10-20"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
+        android:textColor="#F6F7D7"
+
         android:paddingLeft="20dp"
         android:paddingRight="30dp"
         />
@@ -108,9 +112,9 @@
         android:layout_gravity="center"
         android:gravity="left"
         android:textSize="20sp"
-        android:fontFamily="sans-serif-black"
+
         android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
+        android:paddingLeft="65dp"
         />
 
     <EditText
@@ -119,10 +123,10 @@
         android:layout_height="50dp"
         android:background="@drawable/input_space"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="65dp"
         android:hint="15-25"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
+        android:textColor="#F6F7D7"
+
         android:paddingLeft="20dp"
         android:paddingRight="30dp"
         />
@@ -136,7 +140,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:textColor="#000"
+        android:textColor="#faf9f9"
         android:background="#F6F7D7"
         android:textSize="20sp"
         />

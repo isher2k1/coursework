@@ -1,16 +1,21 @@
 package com.isher.skytodo;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -54,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private ProgressBar healthBar;
 
+    private String[] mode = {"Easy", "Medium", "Hard"};
+
     private DatabaseReference reference;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -83,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
 
         loader = new ProgressDialog(this);
         healthBar = findViewById(R.id.healthBar);
+        healthBar.getProgressDrawable().setColorFilter(
+                Color.parseColor("#ff6b6b"), android.graphics.PorterDuff.Mode.SRC_IN);
+        healthBar.setScaleY(2f);
+        //healthBar.setBackgroundColor(Color.BLACK);
 
         mUser = mAuth.getCurrentUser();
         onlineUserID = mUser.getUid();
@@ -104,7 +115,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+
         fab = findViewById(R.id.fab);
+        //fab.setBackgroundColor(Color.parseColor("#1a535c"));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,13 +142,13 @@ public class MainActivity extends AppCompatActivity {
             if (dates.equals(newDate)){
                 hp = healthBar.getProgress();
                 minusHP = hp - count*10;
-                healthBar.setProgress(minusHP);
+                //healthBar.setProgress(minusHP);
+
                 count++;
             }
 
         }
-
-
+        healthBar.setProgress(70);
         System.out.println(count);
     }
 
@@ -155,6 +168,8 @@ public class MainActivity extends AppCompatActivity {
         Button cancel = myView.findViewById(R.id.cancel_button);
 
 
+
+
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
                 String mDescription = description.getText().toString().trim();
                 String id = reference.push().getKey();
                 String date = DateFormat.getDateInstance().format(new Date());
+
 
 
 
@@ -284,6 +300,7 @@ public class MainActivity extends AppCompatActivity {
 
         EditText mTask = view.findViewById(R.id.mEditNameTask);
         EditText mDesc = view.findViewById(R.id.mEditNameDesc);
+        EditText email = view.findViewById(R.id.emailAddress);
 
         mTask.setText(task);
         mTask.setSelection(task.length());
@@ -292,6 +309,22 @@ public class MainActivity extends AppCompatActivity {
 
         Button deleteBtn = view.findViewById(R.id.btnDelete);
         Button updateBtn = view.findViewById(R.id.btnUpdate);
+        Button sendBtn = view.findViewById(R.id.btnSend);
+
+        sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("Send email", "");
+
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, mTask.getText().toString());
+                emailIntent.putExtra(Intent.EXTRA_TEXT, mDesc.getText());
+                emailIntent.setType("message/rfc822");
+                startActivity(Intent.createChooser(emailIntent,"Choose Mail App"));
+            }
+        });
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -338,6 +371,8 @@ public class MainActivity extends AppCompatActivity {
 
         dialog.show();
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

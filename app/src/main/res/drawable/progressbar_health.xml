@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-
-        android:pivotX="0%"
-        android:pivotY="0%"
-        >
-
-        <size
-            android:height="20dp" />
-
-        <gradient
-            android:angle="0"
-            android:endColor="#17B978"
-            android:startColor="#D72323"
-            android:useLevel="false" />
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-</shape>
+        <item>
+                <shape>
+                        <gradient
+                            android:angle="0"
+                            android:endColor="#ff6b6b"
+                            android:startColor="#ff6b6b"
+                            android:useLevel="false" />
+                        <size
+                                android:height="20dp" />
+                </shape>
+
+        </item>
+
+
+
+
+
+</layer-list>
